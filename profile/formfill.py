@@ -17,7 +17,7 @@ BOT_TOKEN = "6857088134:AAF3eX3HFGrk1pfvk-980qwqsIPE3ULPXLA"
 
 # VARIABLES
 load_dotenv(".env")
-HOST, DATABASE, USER, PASSWORD = "ec2-44-215-1-253.compute-1.amazonaws.com", "d6vqeidiqmhasj", "kgrsujqgrvajzu", "026a05bc82999473965cacc0ba33910eaa0566fc4cc46ba0cac6e7059241d627"
+HOST, DATABASE, USER, PASSWORD = "ec2-54-86-180-157.compute-1.amazonaws.com", "d1a568i8v42r6j", "sxmrireobmzuut", "7a9e5cffe7a1412f27e8eed56f6617d498ee9d98772bc1f0f4957b3e7e6ae181"
 
 
 _conn = DatabaseConnection(host=HOST, database=DATABASE, user=USER, password=PASSWORD).connect()
