@@ -118,9 +118,9 @@ async def mutual(user, chat_id):
 
 async def search(message: Message, state: FSMContext):
     user = await _storage.get_user(chat_id=message.from_user.id)
-    forms_list = user['forms']
-    random.shuffle(forms_list)
-    user['forms'] = forms_list
+    # forms_list = user['forms']
+    # random.shuffle(forms_list)
+    # user['forms'] = forms_list
     print(user)
     # if user == {}:
     #     await message.answer(text="Fill your form before entering a search tab", reply_markup=MAIN_MENU)
