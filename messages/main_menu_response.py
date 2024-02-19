@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-
+import random
 from loader import bot, dp
 from aiogram.types import Message
 from aiogram.dispatcher.filters import Text
@@ -118,6 +118,9 @@ async def mutual(user, chat_id):
 
 async def search(message: Message, state: FSMContext):
     user = await _storage.get_user(chat_id=message.from_user.id)
+    forms_list = user['forms']
+    random.shuffle(forms_list)
+    user['forms'] = forms_list
     print(user)
     # if user == {}:
     #     await message.answer(text="Fill your form before entering a search tab", reply_markup=MAIN_MENU)
@@ -162,12 +165,18 @@ async def search(message: Message, state: FSMContext):
                     _base.delete_liker(liker=user["likes"][0][0], liked=message.from_user.id)
                     await _storage.delete_position(chat_id=message.from_user.id, dictionary="likes")
                     user = await _storage.get_user(chat_id=message.from_user.id)
+                    forms_list = user['forms']
+                    random.shuffle(forms_list)
+                    user['forms'] = forms_list
                     print(user)
                 else:
                     _base.dislike(disliker=message.from_user.id, disliked=user["forms"][0][0])
                     _base.delete_liker(liker=user["forms"][0][0], liked=message.from_user.id)
                     await _storage.delete_position(chat_id=message.from_user.id, dictionary="forms")
                     user = await _storage.get_user(chat_id=message.from_user.id)
+                    forms_list = user['forms']
+                    random.shuffle(forms_list)
+                    user['forms'] = forms_list
                     print(user)
                     print('hey')
             except:
