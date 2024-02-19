@@ -165,18 +165,12 @@ async def search(message: Message, state: FSMContext):
                     _base.delete_liker(liker=user["likes"][0][0], liked=message.from_user.id)
                     await _storage.delete_position(chat_id=message.from_user.id, dictionary="likes")
                     user = await _storage.get_user(chat_id=message.from_user.id)
-                    forms_list = user['forms']
-                    random.shuffle(forms_list)
-                    user['forms'] = forms_list
                     print(user)
                 else:
                     _base.dislike(disliker=message.from_user.id, disliked=user["forms"][0][0])
                     _base.delete_liker(liker=user["forms"][0][0], liked=message.from_user.id)
                     await _storage.delete_position(chat_id=message.from_user.id, dictionary="forms")
                     user = await _storage.get_user(chat_id=message.from_user.id)
-                    forms_list = user['forms']
-                    random.shuffle(forms_list)
-                    user['forms'] = forms_list
                     print(user)
                     print('hey')
             except:
